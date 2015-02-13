@@ -1,0 +1,20 @@
+<% if params[:controller] == "home" %>
+  <li class="hidden">
+    <a href="#page-top"></a>
+  </li>
+  <li>
+    <a class="page-scroll" href="#how-it-works">How it Works</a>
+  </li>
+  <li>
+    <a class="page-scroll" href="#contact">Contact</a>
+  </li>
+<% end %>
+
+<% if user_signed_in? %>
+  <li><%= link_to 'Submit Job',  new_user_job_path(current_user) %></li>
+  <li><%= link_to 'Job History', user_jobs_path(current_user) %></li>
+  <li><%= link_to 'Account',     edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out',    destroy_user_session_path, :method=> :delete %></li>
+<% else %>
+  <li><%= link_to 'Client Portal', new_user_registration_path %></li>
+<% end %>
