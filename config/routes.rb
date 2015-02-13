@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
-  post '/contact_us',            to: 'messages#contact_us',            as: 'contact_us'
-  post '/mailgun_receive_email', to: 'messages#mailgun_receive_email', as: 'mailgun_receive_email'
-
   # Client Methods
   devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
   resources :users do
     resources :jobs, only: [:new, :create, :show, :update, :index]
   end
+
+  resources :procedures
+
+  get   'procedure/:slug',         to: 'procedures#show', as: 'procedure_show'
+
+  post '/contact_us',            to: 'messages#contact_us',            as: 'contact_us'
+  post '/mailgun_receive_email', to: 'messages#mailgun_receive_email', as: 'mailgun_receive_email'
 
   # Proofreader methods
   resources :users, only: [:index]

@@ -54,6 +54,7 @@ group :development do
   gem 'rails_apps_pages'
   gem 'rails_apps_testing'
   gem 'rails_layout'
+  gem 'sqlite3'
 end
 
 group :development, :test do

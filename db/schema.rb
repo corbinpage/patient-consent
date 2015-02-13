@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203185053) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150213193813) do
 
   create_table "attachments", force: true do |t|
     t.integer  "message_id"
@@ -27,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.datetime "attachment_updated_at"
   end
 
-  add_index "attachments", ["message_id"], name: "index_attachments_on_message_id", using: :btree
-  add_index "attachments", ["task_id"], name: "index_attachments_on_task_id", using: :btree
+  add_index "attachments", ["message_id"], name: "index_attachments_on_message_id"
+  add_index "attachments", ["task_id"], name: "index_attachments_on_task_id"
 
   create_table "jobs", force: true do |t|
     t.integer  "user_id"
@@ -40,8 +37,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.float    "total_time"
   end
 
-  add_index "jobs", ["job_type"], name: "index_jobs_on_job_type", using: :btree
-  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
+  add_index "jobs", ["job_type"], name: "index_jobs_on_job_type"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
   create_table "messages", force: true do |t|
     t.integer  "job_id"
@@ -58,9 +55,29 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.string   "mailgun_response"
   end
 
-  add_index "messages", ["job_id"], name: "index_messages_on_job_id", using: :btree
-  add_index "messages", ["mailgun_id"], name: "index_messages_on_mailgun_id", using: :btree
-  add_index "messages", ["mailgun_reply_to_id"], name: "index_messages_on_mailgun_reply_to_id", using: :btree
+  add_index "messages", ["job_id"], name: "index_messages_on_job_id"
+  add_index "messages", ["mailgun_id"], name: "index_messages_on_mailgun_id"
+  add_index "messages", ["mailgun_reply_to_id"], name: "index_messages_on_mailgun_reply_to_id"
+
+  create_table "procedure_details", force: true do |t|
+    t.integer  "procedure_id"
+    t.text     "indications_text"
+    t.text     "benefits_text"
+    t.text     "risks_text"
+    t.text     "alternatives_text"
+    t.text     "desciption_text"
+    t.text     "post_op_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "procedures", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tasks", force: true do |t|
     t.integer "job_id"
@@ -68,8 +85,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.boolean "complete"
   end
 
-  add_index "tasks", ["job_id"], name: "index_tasks_on_job_id", using: :btree
-  add_index "tasks", ["task_type"], name: "index_tasks_on_task_type", using: :btree
+  add_index "tasks", ["job_id"], name: "index_tasks_on_job_id"
+  add_index "tasks", ["task_type"], name: "index_tasks_on_task_type"
 
   create_table "timers", force: true do |t|
     t.integer  "task_id"
@@ -78,8 +95,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.datetime "end_time"
   end
 
-  add_index "timers", ["proofreader_id"], name: "index_timers_on_proofreader_id", using: :btree
-  add_index "timers", ["task_id"], name: "index_timers_on_task_id", using: :btree
+  add_index "timers", ["proofreader_id"], name: "index_timers_on_proofreader_id"
+  add_index "timers", ["task_id"], name: "index_timers_on_task_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -90,8 +107,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -101,8 +118,8 @@ ActiveRecord::Schema.define(version: 20150203185053) do
     t.integer  "credits",                default: 0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["role"], name: "index_users_on_role", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role"], name: "index_users_on_role"
 
 end
