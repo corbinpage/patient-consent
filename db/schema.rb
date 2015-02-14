@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213193813) do
+ActiveRecord::Schema.define(version: 20150214182953) do
 
   create_table "attachments", force: true do |t|
     t.integer  "message_id"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20150213193813) do
 
   add_index "attachments", ["message_id"], name: "index_attachments_on_message_id"
   add_index "attachments", ["task_id"], name: "index_attachments_on_task_id"
+
+  create_table "consents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "procedure_id"
+    t.boolean  "indications_complete",  default: false
+    t.boolean  "benefits_complete",     default: false
+    t.boolean  "risks_complete",        default: false
+    t.boolean  "alternatives_complete", default: false
+    t.boolean  "description_complete",  default: false
+    t.boolean  "consent_complete",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "jobs", force: true do |t|
     t.integer  "user_id"

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @consent.user_id %>
+</p>
+
+<p>
+  <strong>Procedure:</strong>
+  <%= @consent.procedure_id %>
+</p>
+
+<p>
+  <strong>Indications complete:</strong>
+  <%= @consent.indications_complete %>
+</p>
+
+<p>
+  <strong>Benefits complete:</strong>
+  <%= @consent.benefits_complete %>
+</p>
+
+<p>
+  <strong>Risks complete:</strong>
+  <%= @consent.risks_complete %>
+</p>
+
+<p>
+  <strong>Alternatives complete:</strong>
+  <%= @consent.alternatives_complete %>
+</p>
+
+<p>
+  <strong>Description complete:</strong>
+  <%= @consent.description_complete %>
+</p>
+
+<p>
+  <strong>Consent complete:</strong>
+  <%= @consent.consent_complete %>
+</p>
+
+<%= link_to 'Edit', edit_consent_path(@consent) %> |
+<%= link_to 'Back', consents_path %>

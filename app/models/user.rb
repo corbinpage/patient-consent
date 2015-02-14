@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :jobs
   has_many :timers
+  has_many :consents
 
   validates :name, :presence => true
   
