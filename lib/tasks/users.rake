@@ -41,7 +41,7 @@ Non-Steroidal Anti-Inflammatory Medications
 Corticosteroid Joint Injection
 Hyaluronic Acid Joint Injection
 eos
-    procedure_detail.desciption_text = 
+    procedure_detail.description_text = 
 <<-eos
 You will be admitted to the hospital the morning of your surgery where you will be visited by your surgeon and the 
 anaesthesiologist managing your case. After all of your questions have been answered by the anaesthesiologist and a 

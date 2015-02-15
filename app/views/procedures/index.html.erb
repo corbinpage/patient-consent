@@ -20,7 +20,7 @@
               <tr>
                 <td><%= link_to procedure.name, procedure %></td>
                 <td><%= procedure.category %></td>
-                <td><%= link_to 'Consent', new_consent_path(procedure.id) %></td>
+                <td><%= link_to 'Consent', consent_new_path(procedure.id) %></td>
                 <td><%= link_to 'Edit', edit_procedure_path(procedure) %></td>
                 <td><%= link_to 'Delete', procedure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>

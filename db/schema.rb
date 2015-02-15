@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20150214182953) do
     t.text     "benefits_text"
     t.text     "risks_text"
     t.text     "alternatives_text"
-    t.text     "desciption_text"
+    t.text     "description_text"
     t.text     "post_op_text"
     t.datetime "created_at"
     t.datetime "updated_at"

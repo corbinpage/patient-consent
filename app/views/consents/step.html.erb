@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<% step = controller.action_name %>
 
 <section class="small-section bg-light-gray">
   <div class="container">
@@ -9,33 +10,30 @@
       <div class="col-sm-offset-1 col-sm-10">
         <div class="panel panel-consent">
           <div class="panel-heading text-center">
-
             <span class="fa-stack fa-2x pull-left">
               <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
-              <a class="consent-button" href="<%= new_consent_path(@consent.procedure_id) %>">
+              <a class="consent-button" href="<%= send('consent_'+previous_step(step)+'_path', @consent.procedure_id, @consent.id) %>">
                 <i class="fa fa-arrow-circle-left fa-stack-2x"></i>
               </a>
             </span>
-            <h2 class="panel-title text-center">Indications</h2>
+            <h2 class="panel-title text-center"><%=step.capitalize%></h2>
             <span class="fa-stack fa-2x pull-right">
               <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
-              <a class="consent-button" href="<%= consent_benefits_path(@consent.procedure_id, @consent.id)%>">
+              <a class="consent-button" href="<%= send('consent_'+next_step(step)+'_path', @consent.procedure_id, @consent.id) %>">
                 <i class="fa fa-arrow-circle-right fa-stack-2x"></i>
               </a>
             </span>
             <!-- <p class="instructions">These are details about indications. </p> -->
           </div>
-          <div class="panel-body">
-
-            <div class="row">
-              <div class="col-xs-12">
-                <h3>Information</h3>
-                <p><%= @consent.procedure.procedure_detail.indications_text%></p> 
-              </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Information</h3>
+              <p><%= @consent.procedure.procedure_detail.send(step+"_text")%></p> 
             </div>
           </div>
         </div>
       </div>
     </div>
+    <%= render 'attestation' %>
   </div>
 </section>

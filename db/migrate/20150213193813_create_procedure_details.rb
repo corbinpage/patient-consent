@@ -6,7 +6,7 @@ class CreateProcedureDetails < ActiveRecord::Migration
       t.text :benefits_text
       t.text :risks_text
       t.text :alternatives_text
-      t.text :desciption_text
+      t.text :description_text
       t.text :post_op_text
 
       t.timestamps

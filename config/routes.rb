@@ -13,14 +13,15 @@ Rails.application.routes.draw do
   # resources :consents
   get '/consents', to: 'consents#index', as: 'consents'
 
-  get '/procedure/:id/consent/new', to: 'consents#new', as: 'new_consent'
+  get '/procedure/:id/consent/new', to: 'consents#new', as: 'consent_new'
   post '/procedure/:id/consent/create', to: 'consents#create', as: 'create_consent'
+  get '/procedure/:id/consent/:consent_id/update', to: 'consents#update', as: 'update_consent'
 
   get '/procedure/:procedure_id/consent/:consent_id/indications', to: 'consents#indications', as: 'consent_indications'
   get '/procedure/:procedure_id/consent/:consent_id/benefits', to: 'consents#benefits', as: 'consent_benefits'
   get '/procedure/:procedure_id/consent/:consent_id/risks', to: 'consents#risks', as: 'consent_risks'
   get '/procedure/:procedure_id/consent/:consent_id/alternatives', to: 'consents#alternatives', as: 'consent_alternatives'
-  get '/procedure/:procedure_id/consent/:consent_id/desciptions', to: 'consents#desciptions', as: 'consent_desciptions'
+  get '/procedure/:procedure_id/consent/:consent_id/description', to: 'consents#description', as: 'consent_description'
 
   post '/contact_us',            to: 'messages#contact_us',            as: 'contact_us'
   post '/mailgun_receive_email', to: 'messages#mailgun_receive_email', as: 'mailgun_receive_email'

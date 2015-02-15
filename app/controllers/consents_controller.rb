@@ -29,36 +29,38 @@ class ConsentsController < ApplicationController
     redirect_to consent_indications_path(procedure_id: @consent.procedure_id, consent_id: @consent.id)
   end
 
-  def create
-    @consent = Consent.new(consent_params)
-    @consent.save!
-    redirect_to consent_indications_path(procedure_id: @consent.procedure_id, consent_id: @consent.id)
-  end
-
   def indications
     @consent = Consent.find(params[:consent_id])
+    render 'step'
   end  
 
   def benefits
     @consent = Consent.find(params[:consent_id])
+    render 'step'
   end  
 
   def risks
     @consent = Consent.find(params[:consent_id])
+    render 'step'
   end  
 
   def alternatives
     @consent = Consent.find(params[:consent_id])
+    render 'step'
   end  
 
-  def descriptions
+  def description
     @consent = Consent.find(params[:consent_id])
+      render 'step'
   end  
 
-  # def update
-  #   @consent.update(consent_params)
-  #   respond_with(@consent)
-  # end
+  def update
+    @consent = Consent.find(params[:consent_id])
+    @consent.send(params[:consent_type]+'_complete=', params[:consent_val])
+    @consent.save
+
+    render plain: "success"
+  end
 
   def destroy
     # Cancel Consent
